@@ -44,6 +44,11 @@ for wrapper, labels in events.items():
     label_text = '/'.join(labels)
     event['SUMMARY'] = icalendar.vText(f"{event['SUMMARY']} ({label_text})")
     event['CATEGORIES'] = icalendar.prop.vCategory([category_map[label] for label in labels])
+
+    # Disable alarms
+    for alarm in event.walk('VALARM'):
+        event.subcomponents.remove(alarm);
+    
     calendar.add_component(event)
 
 # Create combined calendar file
