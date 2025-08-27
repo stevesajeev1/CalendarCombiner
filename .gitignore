@@ -1,2 +1,4 @@
-ics/
 *.ics
+
+venv/
+__pycache__/
