@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 import icalendar
 from util import ComponentWrapper
 
@@ -8,7 +8,7 @@ OUTLOOK_EVENT_CATEGORIES = ['Red category', 'Orange category', 'Yellow category'
 
 
 # Get files in `ics` directory
-files = os.listdir('ics')
+files = [p.name for p in Path('ics').glob("*.ics")]
 
 # Map each file to a category
 assert(len(files) <= len(OUTLOOK_EVENT_CATEGORIES), 'Please add more categories!') # type: ignore
